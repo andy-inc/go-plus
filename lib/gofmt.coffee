@@ -60,6 +60,7 @@ class Gofmt
       return
     done = (exitcode, stdout, stderr, messages) =>
       console.log @name + ' - stdout: ' + stdout if stdout? and stdout.trim() isnt ''
+      console.log @name + ' - stderr: ' + stderr if stderr? and stderr.trim() isnt ''
       messages = @mapMessages(stderr, cwd) if stderr? and stderr.trim() isnt ''
       @emit @name + '-complete', editor, saving
       callback(null, messages)

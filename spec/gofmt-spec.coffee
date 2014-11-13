@@ -118,7 +118,7 @@ describe "format", ->
       waitsFor ->
         done is true
 
-    it "uses goreturns to handle returns if enabled", ->
+    fit "uses goreturns to handle returns if enabled", ->
       done = false
       runs ->
         atom.config.set("go-plus.formatTool", 'goreturns')
