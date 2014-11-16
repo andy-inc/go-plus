@@ -18,6 +18,8 @@ before_script:
   - go get -u golang.org/x/tools/cmd/goimports
   - go get -u golang.org/x/tools/cmd/vet
   - go get -u sourcegraph.com/sqs/goreturns
+  - ls -al $HOME/go/bin
+  - ls -al /usr/local/Cellar/go/1.3.3/libexec/pkg/tool/darwin_amd64
   - popd
 
 script:
