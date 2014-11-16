@@ -38,7 +38,7 @@ describe "vet", ->
     beforeEach ->
       atom.config.set("go-plus.vetOnSave", true)
 
-    it "displays errors for unreachable code", ->
+    fit "displays errors for unreachable code", ->
       done = false
       runs ->
         buffer.setText("package main\n\nimport \"fmt\"\n\nfunc main()  {\nreturn\nfmt.Println(\"Unreachable...\")}\n")
@@ -47,6 +47,9 @@ describe "vet", ->
           expect(dispatch.messages?).toBe true
           expect(_.size(dispatch.messages)).toBe 1
           expect(dispatch.messages[0]).toBeDefined()
+          console.log dispatch.messages[0].msg
+          console.log dispatch.messages[0].column
+          console.log dispatch.messages[0].line
           expect(dispatch.messages[0].column).toBe false
           expect(dispatch.messages[0].line).toBe "7"
           expect(dispatch.messages[0].msg).toBe "unreachable code"

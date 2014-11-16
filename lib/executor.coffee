@@ -30,6 +30,10 @@ class Executor
             source: 'executor'
         result.messages.push message
         result.code = 127
+      else
+        console.log 'Error: ' + done.error
+    console.log 'STDOUT: ' + result.stdout
+    console.log 'STDERR: ' + result.stderr
     return result
 
   exec: (command, cwd, env, callback, args) =>
@@ -45,6 +49,8 @@ class Executor
     stdout = (data) -> output += data
     stderr = (data) -> error += data
     exit = (data) ->
+      console.log 'STDOUT: ' + output
+      console.log 'STDERR: ' + error
       if error? and error isnt '' and error.replace(/\r?\n|\r/g, '') is "\'" + command + "\' is not recognized as an internal or external command,operable program or batch file."
         message =
             line: false
